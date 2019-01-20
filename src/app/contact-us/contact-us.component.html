@@ -1,0 +1,58 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Contact Form</h1>
+    <p class="lead">Tell us something.</p>
+  </div>
+</div>
+<div *ngIf="submitted">
+  <app-alert-bar></app-alert-bar>
+</div>
+<form #contactUsForm="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      name="name"
+      placeholder="Enter name" 
+      ngModel 
+      #name="ngModel" 
+      required
+    >
+    <div *ngIf="name.errors">
+      <small *ngIf="name.touched && name.errors.required" class="form-text text-danger">Name is required</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input 
+      type="email" 
+      class="form-control"
+      name="email"
+      placeholder="Enter email"
+      ngModel
+      #email="ngModel"
+      email
+      required
+    >
+    <div *ngIf="email.errors">
+      <small *ngIf="email.touched && email.errors.required" class="form-text text-danger">Email is required</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Message</label>
+    <textarea
+    style="min-height:300px"
+      class="form-control"
+      name="message"
+      placeholder="Enter Message"
+      ngModel
+      #message="ngModel"
+      required
+    ></textarea>
+    <div *ngIf="message.errors">
+      <small *ngIf="message.touched && message.errors.required" class="form-text text-danger">Message is required</small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!contactUsForm.valid">Submit</button>
+</form>
