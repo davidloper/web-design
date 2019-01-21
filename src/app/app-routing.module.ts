@@ -6,6 +6,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PricingComponent } from './pricing/pricing.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path : '', component : BannerComponent},
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path : 'pricing', component : PricingComponent},
   { path : 'about-us', component : AboutUsComponent},
   { path : 'contact-us', component : ContactUsComponent},
+  { path : 'register', component : RegisterComponent},
+  { path : 'login', component : LoginComponent},
   { path : '**', component : PageNotFoundComponent},
 ];
 

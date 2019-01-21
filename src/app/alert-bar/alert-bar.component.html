@@ -1,3 +1,3 @@
-<div class="alert alert-success">
-  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+<div class="alert" [ngClass]="success ? 'alert-success' : 'alert-danger'">
+  <strong>{{success ? 'Success!' : 'Error!'}}</strong> {{text}}
 </div>

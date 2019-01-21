@@ -5,9 +5,11 @@
   </div>
 </div>
 <div *ngIf="submitted">
-  <app-alert-bar></app-alert-bar>
+  <app-alert-bar [success]="success" 
+    [text]="success ? 'Thank you for your submission.' : 'Something went wrong.'"
+  ></app-alert-bar>
 </div>
-<form #subscribeForm="ngForm" (ngSubmit)="submit()">
+<form #subscribeForm="ngForm" (ngSubmit)="submit(subscribeForm.value)">
   <!-- {{subscribeForm.value | json}} -->
   <div class="form-group">
     <label for="name">Name</label>
@@ -117,17 +119,17 @@
   </div>
   <div class="form-group">
     <label style="display:block;">Receive Newsletter by:</label>
-    <label for="newsletter_by_email" style="margin-left:15px">Email</label>
+    <label for="by_email" style="margin-left:15px">Email</label>
     <input 
       type="checkbox" 
-      name="newsletter_by_email" 
+      name="by_email" 
       ngModel
       #checkbox1="ngModel"
     >
-    <label for="newsletter_by_address" style="margin-left:15px">Address</label>
+    <label for="by_address" style="margin-left:15px">Address</label>
     <input 
       type="checkbox"
-      name="newsletter_by_address"
+      name="by_address"
       ngModel
       #checkbox2="ngModel"
     >

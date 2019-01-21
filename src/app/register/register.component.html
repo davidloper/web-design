@@ -1,0 +1,75 @@
+<div style="height:90vh;display:flex;align-items:center;justify-content: center">
+  <div class="card bg-light mb-3" style="width: 50%;">
+    <div class="card-header">Register</div>
+    <div class="card-body">
+      <form #registerForm="ngForm" (ngSubmit)="submit(registerForm.value)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text" 
+            class="form-control" 
+            name="name"
+            placeholder="Enter name" 
+            ngModel 
+            #name="ngModel" 
+            required
+          >
+          <div *ngIf="name.errors">
+            <small *ngIf="name.touched && name.errors.required" class="form-text text-danger">Name is required</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            class="form-control"
+            name="email"
+            placeholder="Enter email"
+            ngModel
+            #email="ngModel"
+            email
+            required
+          >
+          <div *ngIf="email.errors && email.touched">
+            <small *ngIf="email.errors.required" class="form-text text-danger">Email is required</small>
+            <small *ngIf="email.errors.email" class="form-text text-danger">Email is invalid</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            class="form-control"
+            name="password"
+            placeholder="Enter password"
+            ngModel
+            #password="ngModel"
+            minlength="6"
+            required
+          >
+          <div *ngIf="password.errors && password.touched">
+            <small *ngIf="password.errors.minlength" class="form-text text-danger">Minimum length for password is {{password.errors.minlength.requiredLength}}</small>
+            <small *ngIf="password.errors.required" class="form-text text-danger">Password is required</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password</label>
+          <input 
+            type="password" 
+            class="form-control"
+            name="confirm_password"
+            placeholder="Re-enter password"
+            ngModel
+            #confirm_password="ngModel"
+            required
+          >
+          <small *ngIf="password.value !== confirm_password.value && confirm_password.touched" class="form-text text-danger">Invalid confirm password</small>
+          <div *ngIf="confirm_password.errors">
+            <small *ngIf="confirm_password.touched && confirm_password.errors.required" class="form-text text-danger">Confirm Password is required</small>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid || password.value !== confirm_password.value">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
